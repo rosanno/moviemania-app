@@ -4,14 +4,12 @@ import {
   TouchableWithoutFeedback,
   Image,
   Dimensions,
-  Text,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 
 import { useGetDiscoverMoviesQuery } from "../services/tmdbApi";
 import { image185 } from "../utils";
-import { SafeAreaView } from "react-native-safe-area-context";
 import TopBar from "../components/TopBar";
 
 type MovieDetailsParamList = {
