@@ -3,13 +3,17 @@ import {
   Text,
   FlatList,
   TouchableWithoutFeedback,
+  TouchableOpacity,
   Image,
   Dimensions,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 
-import { useGetDiscoverMoviesQuery } from "../services/tmdbApi";
+import {
+  useGetDiscoverMoviesQuery,
+  useGetGenresQuery,
+} from "../services/tmdbApi";
 import { image185 } from "../utils";
 import TopBar from "../components/TopBar";
 
@@ -21,6 +25,7 @@ const { width, height } = Dimensions.get("window");
 
 export default function MoviesScreen() {
   const { data: movies } = useGetDiscoverMoviesQuery({ type: "movie" });
+  const { data: genres } = useGetGenresQuery();
   const navigation =
     useNavigation<StackNavigationProp<MovieDetailsParamList>>();
 
@@ -31,9 +36,25 @@ export default function MoviesScreen() {
         overScrollMode="never"
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingBottom: 10 }}
-        className="mx-4"
+        ListHeaderComponent={() => (
+          <View className="mb-6">
+            <Text className="text-white text-2xl mx-3">Category</Text>
+            <FlatList
+              horizontal={true}
+              showsHorizontalScrollIndicator={false}
+              data={genres?.genres}
+              keyExtractor={(item) => item.id.toString()}
+              renderItem={({ item }) => (
+                <TouchableOpacity className="mx-1 mt-4 px-2 py-3 rounded-2xl w-28 bg-neutral-500/20">
+                  <Text className="text-white text-center">{item.name}</Text>
+                </TouchableOpacity>
+              )}
+            />
+          </View>
+        )}
         data={movies?.results}
         numColumns={2}
+        className="mx-4"
         renderItem={({ item }) => (
           <View className="my-2 px-0.5">
             <TouchableWithoutFeedback
