@@ -4,15 +4,18 @@ import { REACT_APP_TMDB_API_KEY, REACT_APP_TMDB_BASE_URL } from "@env";
 export const tmdbApi = createApi({
   reducerPath: "tmdbApi",
   baseQuery: fetchBaseQuery({ baseUrl: REACT_APP_TMDB_BASE_URL }),
-  tagTypes: ["Movie"],
+  tagTypes: ["Discover"],
   keepUnusedDataFor: 5,
   endpoints: (builder) => ({
     /** discover movie endpoint */
     getDiscoverMovies: builder.query<Data, any>({
-      query: ({ type }) =>
-        `3/discover/${
+      query: ({ type, with_genres }) => ({
+        url: `3/discover/${
           type === "movie" ? "movie" : "tv"
         }?api_key=${REACT_APP_TMDB_API_KEY}`,
+        params: { with_genres },
+      }),
+      providesTags: ["Discover"],
     }),
 
     /** trending movie endpoint */

@@ -16,6 +16,7 @@ import {
 } from "../services/tmdbApi";
 import { image185 } from "../utils";
 import TopBar from "../components/TopBar";
+import { useState } from "react";
 
 type MovieDetailsParamList = {
   MovieDetails: { id: number };
@@ -24,7 +25,13 @@ type MovieDetailsParamList = {
 const { width, height } = Dimensions.get("window");
 
 export default function MoviesScreen() {
-  const { data: movies } = useGetDiscoverMoviesQuery({ type: "movie" });
+  const [seletedGenres, setSeletedGenres] = useState<
+    number | undefined | null
+  >();
+  const { data: movies } = useGetDiscoverMoviesQuery({
+    type: "movie",
+    with_genres: seletedGenres,
+  });
   const { data: genres } = useGetGenresQuery();
   const navigation =
     useNavigation<StackNavigationProp<MovieDetailsParamList>>();
@@ -40,7 +47,18 @@ export default function MoviesScreen() {
           data={genres?.genres}
           keyExtractor={(item) => item.id.toString()}
           renderItem={({ item }) => (
-            <TouchableOpacity className="ml-2.5 mt-4 px-2 py-3 rounded-2xl w-28 bg-neutral-500/20">
+            <TouchableOpacity
+              onPress={() =>
+                setSeletedGenres(
+                  (prev) => (prev === item.id ? null : item.id) as number | null
+                )
+              }
+              className={`ml-2.5 mt-4 px-2 py-3 rounded-2xl w-28 ${
+                seletedGenres === item.id
+                  ? "bg-yellow-500"
+                  : "bg-neutral-500/20"
+              }`}
+            >
               <Text className="text-white text-center">{item.name}</Text>
             </TouchableOpacity>
           )}
