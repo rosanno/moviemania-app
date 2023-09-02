@@ -29,7 +29,7 @@ export default function Billboard({ data }: { data: Results }) {
           <BookmarkIcon color="white" strokeWidth={2} size={20} />
         </TouchableOpacity>
       </View>
-      <View className="mx-4">
+      <View className="mx-4 mt-4">
         <View className="flex-row items-center justify-between mb-3">
           <Text
             className="text-white text-3xl font-bold"
@@ -39,7 +39,7 @@ export default function Billboard({ data }: { data: Results }) {
           >
             {data?.title || data?.name}
           </Text>
-          <TouchableOpacity className="bg-black/50 rounded-full p-1.5">
+          <TouchableOpacity className="absolute right-3 top-4 bg-black/50 rounded-full p-1.5">
             <HeartIcon color="white" strokeWidth={2.5} size={25} />
           </TouchableOpacity>
         </View>
