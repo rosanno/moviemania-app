@@ -39,7 +39,7 @@ export default function Billboard({ data }: { data: Results }) {
           >
             {data?.title || data?.name}
           </Text>
-          <TouchableOpacity className="absolute right-3 top-4 bg-black/50 rounded-full p-1.5">
+          <TouchableOpacity className="bg-black/50 rounded-full p-1.5">
             <HeartIcon color="white" strokeWidth={2.5} size={25} />
           </TouchableOpacity>
         </View>
