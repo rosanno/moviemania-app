@@ -15,7 +15,7 @@ export default function TopBar({ label }: { label: string }) {
         >
           <ChevronLeftIcon color="white" size={25} />
         </TouchableOpacity>
-        <Text className="text-xl text-white font-bold">{label}</Text>
+        <Text className="text-lg text-white font-bold">{label}</Text>
         <SearchIconButton />
       </View>
     </SafeAreaView>
