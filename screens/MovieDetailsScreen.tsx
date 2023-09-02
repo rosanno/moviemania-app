@@ -1,4 +1,4 @@
-import { ScrollView, TouchableOpacity } from "react-native";
+import { ScrollView, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { ChevronLeftIcon } from "react-native-heroicons/outline";
 
@@ -12,6 +12,7 @@ import Billboard from "../components/Billboard";
 import Cast from "../components/Cast";
 import Media from "../components/Media";
 import { useNavigation } from "@react-navigation/native";
+import TopBar from "../components/TopBar";
 
 type Props = {
   route: any;
@@ -27,23 +28,17 @@ export default function MovieDetailsScreen({ route }: Props) {
   const navigation = useNavigation<any>();
 
   return (
-    <ScrollView overScrollMode="never" className="flex-1 bg-neutral-900">
-      <SafeAreaView className="absolute z-20 mx-4 mt-2">
-        <TouchableOpacity
-          onPress={() => navigation.goBack()}
-          className="bg-black/50 p-1.5 rounded-full"
-        >
-          <ChevronLeftIcon color="white" size={28} />
-        </TouchableOpacity>
-      </SafeAreaView>
+    <View className="flex-1 bg-neutral-900">
+      <TopBar label="Movie Details" />
+      <ScrollView overScrollMode="never">
+        <Billboard data={data as Results} />
 
-      <Billboard data={data as Results} />
+        <Cast credits={credits as Credits} />
 
-      <Cast credits={credits as Credits} />
+        <Media label="Similar Movies" data={similar as Data} />
 
-      <Media label="Similar Movies" data={similar as Data} />
-
-      <Media label="Recommend Movies" data={recommend as Data} />
-    </ScrollView>
+        <Media label="Recommend Movies" data={recommend as Data} />
+      </ScrollView>
+    </View>
   );
 }
