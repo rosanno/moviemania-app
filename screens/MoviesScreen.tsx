@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   View,
   Text,
@@ -16,7 +17,6 @@ import {
 } from "../services/tmdbApi";
 import { image185 } from "../utils";
 import TopBar from "../components/TopBar";
-import { useState } from "react";
 
 type MovieDetailsParamList = {
   MovieDetails: { id: number };
