@@ -33,7 +33,7 @@ export default function MoviesScreen() {
         contentContainerStyle={{ paddingBottom: 10 }}
         className="mx-4"
         data={movies?.results}
-        numColumns={3}
+        numColumns={2}
         renderItem={({ item }) => (
           <View className="my-2 px-0.5">
             <TouchableWithoutFeedback
@@ -43,18 +43,18 @@ export default function MoviesScreen() {
                 <Image
                   source={{ uri: image185(item.poster_path) || undefined }}
                   style={{
-                    width: width * 0.26,
-                    height: height * 0.18,
+                    width: width * 0.42,
+                    height: height * 0.28,
                   }}
-                  className="object-contain rounded-md"
+                  className="object-contain rounded-2xl"
                 />
               </View>
             </TouchableWithoutFeedback>
-            <View className="w-28 pt-2">
-              <Text className="text-center text-neutral-300">
-                {item.title.length < 10
+            <View className="w-36 mx-2 pt-2">
+              <Text className="text-neutral-300">
+                {item.title.length < 20
                   ? item.title
-                  : item.title.slice(0, 12) + "..."}
+                  : item.title.slice(0, 25) + "..."}
               </Text>
             </View>
           </View>
