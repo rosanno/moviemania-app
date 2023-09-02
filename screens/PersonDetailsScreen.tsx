@@ -35,7 +35,7 @@ export default function PersonDetailsScreen({ route }: any) {
   return (
     <View className="flex-1 bg-neutral-900">
       <TopBar label="Person Details" />
-      <ScrollView>
+      <ScrollView overScrollMode="never">
         <View
           className="flex-row justify-center"
           style={{
