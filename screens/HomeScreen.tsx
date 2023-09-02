@@ -22,9 +22,12 @@ export default function HomeScreen() {
   return (
     <View className="flex-1 bg-neutral-900">
       <StatusBar style="light" />
-      <SafeAreaView className="mx-4 mt-2">
+      <SafeAreaView className="mx-4 mt-2 pb-3">
         <View className="flex flex-row items-center justify-between">
-          <Text className="text-white text-4xl font-bold">Discover</Text>
+          <Text className="text-white text-2xl font-bold">
+            Cinema
+            <Text className="text-[#EAB308]">Swipe</Text>
+          </Text>
           <SearchIconButton />
         </View>
       </SafeAreaView>
@@ -34,6 +37,9 @@ export default function HomeScreen() {
         bounces={false}
         overScrollMode="never"
       >
+        <View className="mx-4 mt-8">
+          <Text className="text-white text-4xl font-bold">Discover</Text>
+        </View>
         {/* Discover movies */}
         <Discover />
 
