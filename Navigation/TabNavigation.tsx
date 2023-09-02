@@ -25,7 +25,9 @@ function TabNavigation() {
       initialRouteName="Home"
       screenOptions={({ route }) => ({
         tabBarStyle: {
-          backgroundColor: "#191919",
+          backgroundColor: "#151515",
+          borderTopWidth: 0,
+          height: 60,
         },
         tabBarLabelStyle: {
           display: "none",
