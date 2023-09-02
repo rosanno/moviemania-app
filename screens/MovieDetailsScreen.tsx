@@ -1,6 +1,4 @@
-import { ScrollView, TouchableOpacity, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { ChevronLeftIcon } from "react-native-heroicons/outline";
+import { ScrollView, View } from "react-native";
 
 import {
   useGetMovieCreditsQuery,
@@ -25,7 +23,6 @@ export default function MovieDetailsScreen({ route }: Props) {
   const { data: recommend } = useGetRecommendMoviesQuery({
     id: route.params.id,
   });
-  const navigation = useNavigation<any>();
 
   return (
     <View className="flex-1 bg-neutral-900">
