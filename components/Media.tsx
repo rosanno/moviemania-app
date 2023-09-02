@@ -52,7 +52,7 @@ export default function Media({ label, data }: { label: string; data: Data }) {
                 className="object-contain rounded-xl"
               />
               <View className="w-28 mt-2">
-                <Text className="text-white font-semibold">
+                <Text className="text-white font-semibold leading-5">
                   {item.title.length < 20
                     ? item.title
                     : item.title.slice(0, 20) + "..."}
