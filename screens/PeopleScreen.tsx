@@ -25,6 +25,7 @@ export default function PeopleScreen() {
     <View className="flex-1 bg-neutral-900">
       <TopBar label="Popular People" />
       <FlatList
+        overScrollMode="never"
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingBottom: 10 }}
         className="mx-4"

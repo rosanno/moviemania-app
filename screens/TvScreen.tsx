@@ -27,6 +27,7 @@ export default function TvScreen() {
     <View className="flex-1 bg-neutral-900">
       <TopBar label="TV Shows" />
       <FlatList
+        overScrollMode="never"
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingBottom: 10 }}
         className="mx-4"

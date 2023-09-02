@@ -40,6 +40,7 @@ export default function HomeScreen() {
         ref={ref}
         contentContainerStyle={{ paddingBottom: 10 }}
         bounces={false}
+        overScrollMode="never"
       >
         {/* Discover movies */}
         <Discover />

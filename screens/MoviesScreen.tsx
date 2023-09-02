@@ -28,6 +28,7 @@ export default function MoviesScreen() {
     <View className="flex-1 bg-neutral-900">
       <TopBar label="Movies" />
       <FlatList
+        overScrollMode="never"
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingBottom: 10 }}
         className="mx-4"

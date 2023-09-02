@@ -27,7 +27,7 @@ export default function MovieDetailsScreen({ route }: Props) {
   const navigation = useNavigation<any>();
 
   return (
-    <ScrollView className="flex-1 bg-neutral-900">
+    <ScrollView overScrollMode="never" className="flex-1 bg-neutral-900">
       <SafeAreaView className="absolute z-20 mx-4 mt-2">
         <TouchableOpacity
           onPress={() => navigation.goBack()}
