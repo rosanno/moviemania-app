@@ -1,32 +1,27 @@
-import { View, Text, Image, Dimensions, ScrollView } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  Dimensions,
+  ScrollView,
+  FlatList,
+  TouchableWithoutFeedback,
+} from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
+
 import {
   useGetCreditMoviesQuery,
   useGetPersonDetailsQuery,
 } from "../services/tmdbApi";
 import TopBar from "../components/TopBar";
-import { image342 } from "../utils";
+import { image185, image342 } from "../utils";
+import PersonDataItem from "../components/PersonDataItem";
 
 const { width, height } = Dimensions.get("window");
 
-const PersonData = ({
-  label,
-  item,
-  border = false,
-}: {
-  label: string;
-  item: any;
-  border?: boolean;
-}) => {
-  return (
-    <View
-      className={`${
-        border && "border-r-2 border-r-neutral-400"
-      } px-2 items-center`}
-    >
-      <Text className="text-white font-semibold">{label}</Text>
-      <Text className="text-neutral-300 text-sm">{item}</Text>
-    </View>
-  );
+type MovieDetailsParamList = {
+  MovieDetails: { id: number };
 };
 
 export default function PersonDetailsScreen({ route }: any) {
@@ -34,6 +29,8 @@ export default function PersonDetailsScreen({ route }: any) {
   const { data: creditMovies } = useGetCreditMoviesQuery({
     id: route.params.id,
   });
+  const navigation =
+    useNavigation<StackNavigationProp<MovieDetailsParamList>>();
 
   return (
     <View className="flex-1 bg-neutral-900">
@@ -64,18 +61,18 @@ export default function PersonDetailsScreen({ route }: any) {
           </Text>
         </View>
         <View className="mx-3 p-4 mt-6 flex-row justify-between items-center bg-neutral-700/50 rounded-full">
-          <PersonData
+          <PersonDataItem
             label="Gender"
             item={person?.gender === 1 ? "Female" : "Male"}
             border
           />
-          <PersonData label="Birthday" item={person?.birthday} border />
-          <PersonData
+          <PersonDataItem label="Birthday" item={person?.birthday} border />
+          <PersonDataItem
             label="Known for"
             item={person?.known_for_department}
             border
           />
-          <PersonData
+          <PersonDataItem
             label="Popularity"
             item={person?.popularity?.toFixed(2) + "%"}
           />
@@ -88,6 +85,38 @@ export default function PersonDetailsScreen({ route }: any) {
               ? person?.biography
               : person?.biography?.slice(0, 150) + "..." || "N/A"}
           </Text>
+        </View>
+
+        <View className="mx-4 mb-6">
+          <View className="flex-row items-center justify-between mb-4">
+            <Text className="text-white text-lg font-bold">Known for</Text>
+          </View>
+          <FlatList
+            horizontal={true}
+            showsHorizontalScrollIndicator={false}
+            data={creditMovies?.cast}
+            keyExtractor={(item) => item.id.toString()}
+            renderItem={({ item }) => (
+              <TouchableWithoutFeedback
+                onPress={() =>
+                  navigation.push("MovieDetails", {
+                    id: item.id,
+                  })
+                }
+              >
+                <View className="px-2">
+                  <Image
+                    source={{ uri: image185(item.poster_path) || undefined }}
+                    style={{
+                      width: width * 0.34,
+                      height: height * 0.24,
+                    }}
+                    className="object-contain rounded-xl"
+                  />
+                </View>
+              </TouchableWithoutFeedback>
+            )}
+          />
         </View>
       </ScrollView>
     </View>
