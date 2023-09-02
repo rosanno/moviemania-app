@@ -1,5 +1,6 @@
 import {
   View,
+  Text,
   FlatList,
   TouchableWithoutFeedback,
   Image,
@@ -33,7 +34,7 @@ export default function MoviesScreen() {
         data={movies?.results}
         numColumns={3}
         renderItem={({ item }) => (
-          <View className="my-2">
+          <View className="my-2 px-0.5">
             <TouchableWithoutFeedback
               onPress={() => navigation.push("MovieDetails", { id: item.id })}
             >
@@ -41,13 +42,20 @@ export default function MoviesScreen() {
                 <Image
                   source={{ uri: image185(item.poster_path) || undefined }}
                   style={{
-                    width: width * 0.27,
-                    height: height * 0.2,
+                    width: width * 0.26,
+                    height: height * 0.18,
                   }}
                   className="object-contain rounded-md"
                 />
               </View>
             </TouchableWithoutFeedback>
+            <View className="w-28 pt-2">
+              <Text className="text-center text-neutral-300">
+                {item.title.length < 10
+                  ? item.title
+                  : item.title.slice(0, 12) + "..."}
+              </Text>
+            </View>
           </View>
         )}
         keyExtractor={(item) => item.id.toString()}
