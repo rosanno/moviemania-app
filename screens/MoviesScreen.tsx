@@ -32,26 +32,24 @@ export default function MoviesScreen() {
   return (
     <View className="flex-1 bg-neutral-900">
       <TopBar label="Movies" />
+      <View className="mb-6 ml-4">
+        <Text className="text-white text-2xl mx-3">Category</Text>
+        <FlatList
+          horizontal={true}
+          showsHorizontalScrollIndicator={false}
+          data={genres?.genres}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={({ item }) => (
+            <TouchableOpacity className="ml-2.5 mt-4 px-2 py-3 rounded-2xl w-28 bg-neutral-500/20">
+              <Text className="text-white text-center">{item.name}</Text>
+            </TouchableOpacity>
+          )}
+        />
+      </View>
       <FlatList
         overScrollMode="never"
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingBottom: 10 }}
-        ListHeaderComponent={() => (
-          <View className="mb-6">
-            <Text className="text-white text-2xl mx-3">Category</Text>
-            <FlatList
-              horizontal={true}
-              showsHorizontalScrollIndicator={false}
-              data={genres?.genres}
-              keyExtractor={(item) => item.id.toString()}
-              renderItem={({ item }) => (
-                <TouchableOpacity className="mx-1 mt-4 px-2 py-3 rounded-2xl w-28 bg-neutral-500/20">
-                  <Text className="text-white text-center">{item.name}</Text>
-                </TouchableOpacity>
-              )}
-            />
-          </View>
-        )}
         data={movies?.results}
         numColumns={2}
         className="mx-4"
