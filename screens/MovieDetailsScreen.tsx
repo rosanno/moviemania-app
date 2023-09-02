@@ -31,11 +31,12 @@ export default function MovieDetailsScreen({ route }: Props) {
       <SafeAreaView className="absolute z-20 mx-4 mt-2">
         <TouchableOpacity
           onPress={() => navigation.goBack()}
-          className="bg-black/80 p-1.5 rounded-md"
+          className="bg-black/50 p-1.5 rounded-full"
         >
           <ChevronLeftIcon color="white" size={28} />
         </TouchableOpacity>
       </SafeAreaView>
+
       <Billboard data={data as Results} />
 
       <Cast credits={credits as Credits} />
