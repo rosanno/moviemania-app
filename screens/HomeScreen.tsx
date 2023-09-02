@@ -22,17 +22,15 @@ export default function HomeScreen() {
   return (
     <View className="flex-1 bg-neutral-900">
       <StatusBar style="light" />
-      <SafeAreaView className="mt-2 pb-2 border-b border-b-neutral-600/20">
-        <View className="mx-4 flex flex-row items-center justify-between">
-          <Text className="text-3xl text-white font-bold">
-            Movie-<Text className="text-[#EAB308]">E</Text>
-          </Text>
+      <SafeAreaView className="mx-4 mt-2">
+        <View className="flex flex-row items-center justify-between">
+          <Text className="text-white text-4xl font-bold">Discover</Text>
           <SearchIconButton />
         </View>
       </SafeAreaView>
       <ScrollView
         ref={ref}
-        contentContainerStyle={{ paddingBottom: 10, paddingTop: 20 }}
+        contentContainerStyle={{ paddingBottom: 10 }}
         bounces={false}
         overScrollMode="never"
       >
