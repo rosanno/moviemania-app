@@ -2,20 +2,20 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import {
   HomeIcon,
   FilmIcon,
-  TvIcon,
   UsersIcon,
+  HeartIcon,
 } from "react-native-heroicons/outline";
 import {
   HomeIcon as HomeSolidIcon,
   FilmIcon as FilmSolidIcon,
-  TvIcon as TvSolidIcon,
   UsersIcon as UsersSolidIcon,
+  HeartIcon as HeartSolidIcon,
 } from "react-native-heroicons/solid";
 
 import HomeScreen from "../screens/HomeScreen";
 import MoviesScreen from "../screens/MoviesScreen";
-import TvScreen from "../screens/TvScreen";
 import PeopleScreen from "../screens/PeopleScreen";
+import Favorites from "../screens/Favorites";
 
 const Tab = createBottomTabNavigator();
 
@@ -47,11 +47,11 @@ function TabNavigation() {
             ) : (
               <FilmIcon color="white" size={25} />
             );
-          } else if (routeName === "Tv") {
+          } else if (routeName === "Favorites") {
             return focused ? (
-              <TvSolidIcon color="white" size={25} />
+              <HeartSolidIcon color="white" size={25} />
             ) : (
-              <TvIcon color="white" size={25} />
+              <HeartIcon color="white" size={25} />
             );
           } else if (routeName === "People") {
             return focused ? (
@@ -74,8 +74,8 @@ function TabNavigation() {
         options={{ headerShown: false }}
       />
       <Tab.Screen
-        name="Tv"
-        component={TvScreen}
+        name="Favorites"
+        component={Favorites}
         options={{ headerShown: false }}
       />
       <Tab.Screen
