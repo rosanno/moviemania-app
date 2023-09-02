@@ -37,9 +37,6 @@ export default function HomeScreen() {
         bounces={false}
         overScrollMode="never"
       >
-        <View className="mx-4 mt-8">
-          <Text className="text-white text-4xl font-bold">Discover</Text>
-        </View>
         {/* Discover movies */}
         <Discover />
 
