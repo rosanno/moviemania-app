@@ -47,8 +47,13 @@ export const tmdbApi = createApi({
       query: () => `3/person/popular?api_key=${REACT_APP_TMDB_API_KEY}`,
     }),
 
-    getPersonDetails: builder.query<any, any>({
+    getPersonDetails: builder.query<Person, any>({
       query: ({ id }) => `/3/person/${id}?api_key=${REACT_APP_TMDB_API_KEY}`,
+    }),
+
+    getCreditMovies: builder.query<CreditMovies, any>({
+      query: ({ id }) =>
+        `/3/person/${id}/combined_credits?api_key=${REACT_APP_TMDB_API_KEY}`,
     }),
 
     /** recommendation movies endpoint */
@@ -85,6 +90,7 @@ export const {
   useGetSimilarMoviesQuery,
   useGetPopularPeopleQuery,
   useGetPersonDetailsQuery,
+  useGetCreditMoviesQuery,
   useGetRecommendMoviesQuery,
   useSearchQuery,
   useGetLogoQuery,

@@ -3,6 +3,10 @@ interface Data {
   results: Results[];
 }
 
+interface CreditMovies {
+  cast: Results[];
+}
+
 interface Results {
   adult: string;
   backdrop_path: string;
@@ -72,11 +76,14 @@ interface People {
 
 interface Person {
   adult: boolean;
+  biography?: string;
+  birthday?: string;
   gender: number;
   id: number;
   known_for: KnownFor[];
   known_for_department: string;
   name: string;
+  place_of_birth: string;
   popularity: number;
   profile_path: string;
 }
