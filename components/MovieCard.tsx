@@ -34,33 +34,17 @@ export default function MovieCard({ item }: { item: Results }) {
         });
       }}
     >
-      <View
-        style={{
-          width: width - 40,
-          height: height * 0.28,
-        }}
-        className="relative rounded-2xl overflow-hidden"
-      >
+      <View>
         <Image
-          source={{ uri: image500(item.backdrop_path) || undefined }}
-          className="absolute w-full h-full object-contain"
-        />
-        <View
+          source={{ uri: image500(item.poster_path || "") || undefined }}
           style={{
-            backgroundColor: "rgba(0, 0, 0, 0.3)",
+            width: width * 0.64,
+            height: height * 0.45,
           }}
-          className="absolute top-0 left-0 w-full h-full"
+          className="rounded-3xl"
         />
-        <View className="absolute bottom-3 left-2 right-0 px-3">
-          <Text className="text-white text-xl font-bold">{item?.title}</Text>
-          <View className="flex-row items-center">
-            {movieGenres?.map((genre, index) => (
-              <Text key={genre.id} className="text-neutral-300 text-sm">
-                {index > 0 && ", "}
-                {genre.name}
-              </Text>
-            ))}
-          </View>
+        <View className="flex-row justify-center text-center mt-2.5">
+          <Text className="text-white text-lg font-semibold">{item.title}</Text>
         </View>
       </View>
     </TouchableWithoutFeedback>

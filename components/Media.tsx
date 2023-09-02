@@ -34,7 +34,6 @@ export default function Media({ label, data }: { label: string; data: Data }) {
         showsHorizontalScrollIndicator={false}
         data={data?.results}
         keyExtractor={(item) => item.id.toString()}
-        decelerationRate={0}
         renderItem={({ item }) => (
           <TouchableWithoutFeedback
             onPress={() =>

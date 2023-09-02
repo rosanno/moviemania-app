@@ -21,7 +21,7 @@ export default function Discover() {
         inactiveSlideOpacity={0.6}
         sliderWidth={width}
         sliderHeight={height}
-        itemWidth={width - 40}
+        itemWidth={width * 0.66}
         slideStyle={{ display: "flex", alignItems: "center" }}
       />
     </View>
