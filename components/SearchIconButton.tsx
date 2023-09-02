@@ -7,8 +7,11 @@ export default function SearchIconButton() {
   const navigation = useNavigation<any>();
 
   return (
-    <TouchableOpacity onPress={() => navigation.navigate("SearchScreen")}>
-      <MagnifyingGlassIcon color="white" size={30} />
+    <TouchableOpacity
+      onPress={() => navigation.navigate("SearchScreen")}
+      className="bg-black/40 rounded-full p-2"
+    >
+      <MagnifyingGlassIcon color="white" size={25} />
     </TouchableOpacity>
   );
 }

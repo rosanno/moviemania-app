@@ -9,7 +9,10 @@ export default function TopBar({ label }: { label: string }) {
   return (
     <SafeAreaView className="mx-4 mt-2 mb-4">
       <View className="flex flex-row items-center justify-between">
-        <TouchableOpacity onPress={() => navigation.goBack()}>
+        <TouchableOpacity
+          onPress={() => navigation.goBack()}
+          className="bg-black/40 rounded-full p-1.5"
+        >
           <ChevronLeftIcon color="white" size={25} />
         </TouchableOpacity>
         <Text className="text-xl text-white font-bold">{label}</Text>
