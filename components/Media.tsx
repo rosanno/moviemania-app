@@ -23,7 +23,7 @@ export default function Media({ label, data }: { label: string; data: Data }) {
 
   return (
     <View className="ml-4 mb-6">
-      <View className="mx-3 flex-row items-center justify-between mb-4">
+      <View className="ml-3 mr-5 flex-row items-center justify-between mb-4">
         <Text className="text-white text-base font-bold">{label}</Text>
         <TouchableWithoutFeedback>
           <Text className="text-sm text-[#EAB308]">See all</Text>
