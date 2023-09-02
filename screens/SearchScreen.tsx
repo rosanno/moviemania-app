@@ -37,18 +37,19 @@ export default function SearchScreen() {
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <ChevronLeftIcon color="white" size={28} />
         </TouchableOpacity>
-        <View className="flex-1 flex-row py-1.5 px-3 justify-between items-center bg-neutral-800 rounded-full">
+        <View className="flex-1 flex-row py-1 px-3 justify-between items-center bg-neutral-800 rounded-full">
           <TextInput
             onChangeText={(text) => setQuery(text)}
-            placeholder="Search for movie, tv show"
+            placeholder="Search for movies"
             placeholderTextColor={"lightgray"}
-            className="p-1 pl-1 flex-1 text-base font-semibold text-white tracking-wider"
+            className="py-0.5 pl-1.5 flex-1 text-base font-semibold text-white tracking-wider"
           />
         </View>
       </View>
       <View>
         {searchResults && query !== "" && searchResults?.results?.length > 0 ? (
           <FlatList
+            overScrollMode="never"
             showsVerticalScrollIndicator={false}
             contentContainerStyle={{ paddingBottom: 90 }}
             className="mx-4"
