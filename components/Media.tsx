@@ -46,11 +46,18 @@ export default function Media({ label, data }: { label: string; data: Data }) {
               <Image
                 source={{ uri: image185(item.poster_path) || undefined }}
                 style={{
-                  width: width * 0.38,
-                  height: height * 0.26,
+                  width: width * 0.3,
+                  height: height * 0.2,
                 }}
                 className="object-contain rounded-xl"
               />
+              <View className="w-28 mt-2">
+                <Text className="text-white font-semibold">
+                  {item.title.length < 20
+                    ? item.title
+                    : item.title.slice(0, 20) + "..."}
+                </Text>
+              </View>
             </View>
           </TouchableWithoutFeedback>
         )}
