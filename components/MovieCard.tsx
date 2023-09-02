@@ -4,12 +4,13 @@ import {
   Image,
   Dimensions,
   Text,
+  TouchableOpacity,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
+import { BookmarkIcon } from "react-native-heroicons/outline";
 
 import { image500 } from "../utils";
-import { useGetGenresQuery } from "../services/tmdbApi";
 
 type MovieDetailsParamList = {
   MovieDetails: { id: number };
@@ -20,11 +21,6 @@ const { width, height } = Dimensions.get("window");
 export default function MovieCard({ item }: { item: Results }) {
   const navigation =
     useNavigation<StackNavigationProp<MovieDetailsParamList>>();
-  const { data: genres } = useGetGenresQuery();
-
-  const movieGenres = genres?.genres?.filter((genre) =>
-    item.genre_ids.includes(genre.id)
-  );
 
   return (
     <TouchableWithoutFeedback
@@ -43,7 +39,10 @@ export default function MovieCard({ item }: { item: Results }) {
           }}
           className="rounded-3xl"
         />
-        <View className="flex-row justify-center text-center mt-2.5">
+        <TouchableOpacity className="absolute right-3 top-4 bg-black/50 rounded-full p-1.5">
+          <BookmarkIcon color="white" strokeWidth={2} size={20} />
+        </TouchableOpacity>
+        <View className="flex-row justify-center text-center mt-2.5 w-52">
           <Text className="text-white text-lg font-semibold">{item.title}</Text>
         </View>
       </View>
