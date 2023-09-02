@@ -11,8 +11,10 @@ export default function Discover() {
 
   return (
     <View className="mb-8">
-      <View className="mx-4 mt-8 mb-6">
-        <Text className="text-white text-4xl font-bold">Discover</Text>
+      <View className="mx-4 mt-4 mb-6">
+        <Text className="text-white text-2xl font-bold text-center">
+          Discover Movies
+        </Text>
       </View>
       <Carousel
         data={data?.results || []}
