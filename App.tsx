@@ -7,6 +7,7 @@ import TabNavigation from "./Navigation/TabNavigation";
 import MovieDetailsScreen from "./screens/MovieDetailsScreen";
 import PersonDetailsScreen from "./screens/PersonDetailsScreen";
 import SearchScreen from "./screens/SearchScreen";
+import LoginScreen from "./screens/LoginScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -19,6 +20,11 @@ export default function App() {
             name="Tab"
             component={TabNavigation}
             options={{ animation: "default" }}
+          />
+          <Stack.Screen
+            name="LoginScreen"
+            component={LoginScreen}
+            options={{ animation: "slide_from_right" }}
           />
           <Stack.Screen
             name="MovieDetails"
