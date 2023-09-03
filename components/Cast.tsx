@@ -1,4 +1,11 @@
-import { View, Text, FlatList, TouchableOpacity, Image } from "react-native";
+import {
+  View,
+  Text,
+  FlatList,
+  TouchableOpacity,
+  Image,
+  ActivityIndicator,
+} from "react-native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { useNavigation } from "@react-navigation/native";
 
@@ -6,19 +13,25 @@ import { image185 } from "../utils";
 
 interface CastProps {
   credits: Credits;
+  isLoading: boolean;
 }
 
 type PersonDetailsParamList = {
   PersonDetails: { id: number };
 };
 
-export default function Cast({ credits }: CastProps) {
+export default function Cast({ credits, isLoading }: CastProps) {
   const navigation =
     useNavigation<StackNavigationProp<PersonDetailsParamList>>();
 
   return (
     <View className="mx-4 mt-5 mb-8">
       <Text className="text-[#EAB308] text-lg mb-1.5">Cast</Text>
+      {isLoading && (
+        <View className="flex-row justify-center text-center">
+          <ActivityIndicator size="large" color="#EAB308" />
+        </View>
+      )}
       <FlatList
         showsHorizontalScrollIndicator={false}
         horizontal={true}

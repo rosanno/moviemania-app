@@ -17,24 +17,36 @@ type Props = {
 };
 
 export default function MovieDetailsScreen({ route }: Props) {
-  const { data } = useGetMovieDetailsQuery({ id: route.params.id });
-  const { data: credits } = useGetMovieCreditsQuery({ id: route.params.id });
-  const { data: similar } = useGetSimilarMoviesQuery({ id: route.params.id });
-  const { data: recommend } = useGetRecommendMoviesQuery({
-    id: route.params.id,
-  });
+  const { data, isLoading } = useGetMovieDetailsQuery({ id: route.params.id });
+  const { data: credits, isLoading: isCreditLoading } = useGetMovieCreditsQuery(
+    { id: route.params.id }
+  );
+  const { data: similar, isLoading: isSimilarLoading } =
+    useGetSimilarMoviesQuery({ id: route.params.id });
+  const { data: recommend, isLoading: isRecommendLoading } =
+    useGetRecommendMoviesQuery({
+      id: route.params.id,
+    });
 
   return (
     <View className="flex-1 bg-neutral-900">
       <TopBar label="Movie Details" />
       <ScrollView overScrollMode="never">
-        <Billboard data={data as Results} />
+        <Billboard data={data as Results} isLoading={isLoading} />
 
-        <Cast credits={credits as Credits} />
+        <Cast credits={credits as Credits} isLoading={isCreditLoading} />
 
-        <Media label="Similar Movies" data={similar as Data} />
+        <Media
+          label="Similar Movies"
+          data={similar as Data}
+          isLoading={isSimilarLoading}
+        />
 
-        <Media label="Recommend Movies" data={recommend as Data} />
+        <Media
+          label="Recommend Movies"
+          data={recommend as Data}
+          isLoading={isRecommendLoading}
+        />
       </ScrollView>
     </View>
   );

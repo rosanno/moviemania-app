@@ -6,6 +6,7 @@ import {
   FlatList,
   Image,
   Dimensions,
+  ActivityIndicator,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
@@ -18,7 +19,15 @@ type MovieDetailsParamList = {
   MovieDetails: { id: number };
 };
 
-function Media({ label, data }: { label: string; data: Data }) {
+function Media({
+  label,
+  data,
+  isLoading,
+}: {
+  label: string;
+  data: Data;
+  isLoading: boolean;
+}) {
   const navigation =
     useNavigation<StackNavigationProp<MovieDetailsParamList>>();
 
@@ -34,6 +43,12 @@ function Media({ label, data }: { label: string; data: Data }) {
       {data?.results?.length === 0 && (
         <View className="flex-row justify-center text-center">
           <Text className="text-base text-neutral-400">No {label}</Text>
+        </View>
+      )}
+
+      {isLoading && (
+        <View className="flex-row justify-center text-center">
+          <ActivityIndicator size="large" color="#EAB308" />
         </View>
       )}
 

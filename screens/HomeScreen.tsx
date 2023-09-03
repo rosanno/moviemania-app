@@ -13,8 +13,10 @@ import SearchIconButton from "../components/SearchIconButton";
 import { useScrollToTop } from "@react-navigation/native";
 
 export default function HomeScreen() {
-  const { data: trending } = useGetTrendingMoviesQuery();
-  const { data: upcoming } = useGetUpcomingMoviesQuery();
+  const { data: trending, isLoading: isTrendingLoading } =
+    useGetTrendingMoviesQuery();
+  const { data: upcoming, isLoading: isUpcomingLoading } =
+    useGetUpcomingMoviesQuery();
   const ref = useRef(null);
 
   useScrollToTop(ref);
@@ -41,10 +43,18 @@ export default function HomeScreen() {
         <Discover />
 
         {/* Trending Movies */}
-        <Media label="Trending" data={trending as Data} />
+        <Media
+          label="Trending"
+          data={trending as Data}
+          isLoading={isTrendingLoading}
+        />
 
         {/* Trending Movies */}
-        <Media label="Upcoming" data={upcoming as Data} />
+        <Media
+          label="Upcoming"
+          data={upcoming as Data}
+          isLoading={isUpcomingLoading}
+        />
       </ScrollView>
     </View>
   );
