@@ -104,3 +104,9 @@ interface KnownFor {
   vote_average: number;
   vote_account: number;
 }
+
+interface AuthResponse {
+  data: {
+    accessToken: string;
+  };
+}
