@@ -1,3 +1,4 @@
+import { memo } from "react";
 import {
   View,
   Text,
@@ -17,7 +18,7 @@ type MovieDetailsParamList = {
   MovieDetails: { id: number };
 };
 
-export default function Media({ label, data }: { label: string; data: Data }) {
+function Media({ label, data }: { label: string; data: Data }) {
   const navigation =
     useNavigation<StackNavigationProp<MovieDetailsParamList>>();
 
@@ -29,6 +30,13 @@ export default function Media({ label, data }: { label: string; data: Data }) {
           <Text className="text-sm text-[#EAB308]">See all</Text>
         </TouchableWithoutFeedback>
       </View>
+
+      {data?.results?.length === 0 && (
+        <View className="flex-row justify-center text-center">
+          <Text className="text-base text-neutral-400">No {label}</Text>
+        </View>
+      )}
+
       <FlatList
         horizontal={true}
         showsHorizontalScrollIndicator={false}
@@ -65,3 +73,5 @@ export default function Media({ label, data }: { label: string; data: Data }) {
     </View>
   );
 }
+
+export default memo(Media);
