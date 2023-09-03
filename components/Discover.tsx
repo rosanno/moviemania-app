@@ -13,7 +13,7 @@ export default function Discover() {
     <View className="mb-8">
       <View className="mx-4 mt-4 mb-6">
         <Text className="text-white text-2xl font-bold text-center">
-          Discover Movies
+          Discover
         </Text>
       </View>
       <Carousel
