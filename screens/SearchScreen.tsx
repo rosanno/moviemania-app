@@ -91,7 +91,7 @@ export default function SearchScreen() {
         ) : (
           <View
             className="flex-row justify-center items-center"
-            style={{ height: height * 0.7 }}
+            style={{ height: height * 0.8 }}
           >
             <MagnifyingGlassIcon color="grey" size={120} />
           </View>
