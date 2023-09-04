@@ -1,7 +1,8 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { View, Text, TouchableOpacity, ToastAndroid } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useDispatch } from "react-redux";
+import { useNavigation } from "@react-navigation/native";
 
 import { useLoginMutation } from "../services/auth";
 import Input from "../components/Input";
@@ -9,6 +10,7 @@ import { setToken } from "../features/authSlice/authSlice";
 
 export default function LoginScreen() {
   const dispatch = useDispatch();
+  const navigation = useNavigation();
   const [login] = useLoginMutation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -22,9 +24,11 @@ export default function LoginScreen() {
 
     if (res.error) {
       ToastAndroid.show(res.error.data.message, ToastAndroid.SHORT);
+      return;
     }
 
     dispatch(setToken(res?.data?.accessToken));
+    navigation.goBack();
   };
 
   return (
