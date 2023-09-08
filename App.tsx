@@ -6,7 +6,6 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { persistor, store } from "./store";
 import TabNavigation from "./Navigation/TabNavigation";
 import MovieDetailsScreen from "./screens/MovieDetailsScreen";
-import PersonDetailsScreen from "./screens/PersonDetailsScreen";
 import SearchScreen from "./screens/SearchScreen";
 import LoginScreen from "./screens/LoginScreen";
 
@@ -31,11 +30,6 @@ export default function App() {
             <Stack.Screen
               name="MovieDetails"
               component={MovieDetailsScreen}
-              options={{ animation: "slide_from_right" }}
-            />
-            <Stack.Screen
-              name="PersonDetails"
-              component={PersonDetailsScreen}
               options={{ animation: "slide_from_right" }}
             />
             <Stack.Screen

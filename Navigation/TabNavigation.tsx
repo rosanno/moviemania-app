@@ -1,21 +1,14 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import {
-  HomeIcon,
-  FilmIcon,
-  UsersIcon,
-  HeartIcon,
-} from "react-native-heroicons/outline";
+import { HomeIcon, FilmIcon, UserIcon } from "react-native-heroicons/outline";
 import {
   HomeIcon as HomeSolidIcon,
   FilmIcon as FilmSolidIcon,
-  UsersIcon as UsersSolidIcon,
-  HeartIcon as HeartSolidIcon,
+  UserIcon as UserSolidIcon,
 } from "react-native-heroicons/solid";
 
 import HomeScreen from "../screens/HomeScreen";
 import MoviesScreen from "../screens/MoviesScreen";
-import PeopleScreen from "../screens/PeopleScreen";
-import Favorites from "../screens/Favorites";
+import PeopleScreen from "../screens/Profile";
 
 const Tab = createBottomTabNavigator();
 
@@ -47,17 +40,11 @@ function TabNavigation() {
             ) : (
               <FilmIcon color="white" size={25} />
             );
-          } else if (routeName === "Favorites") {
+          } else if (routeName === "Profile") {
             return focused ? (
-              <HeartSolidIcon color="white" size={25} />
+              <UserSolidIcon color="white" size={25} />
             ) : (
-              <HeartIcon color="white" size={25} />
-            );
-          } else if (routeName === "People") {
-            return focused ? (
-              <UsersSolidIcon color="white" size={25} />
-            ) : (
-              <UsersIcon color="white" size={25} />
+              <UserIcon color="white" size={25} />
             );
           }
         },
@@ -74,12 +61,7 @@ function TabNavigation() {
         options={{ headerShown: false }}
       />
       <Tab.Screen
-        name="Favorites"
-        component={Favorites}
-        options={{ headerShown: false }}
-      />
-      <Tab.Screen
-        name="People"
+        name="Profile"
         component={PeopleScreen}
         options={{ headerShown: false }}
       />
